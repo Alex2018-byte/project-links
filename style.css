@@ -1,0 +1,207 @@
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis de Tema */
+:root {
+    --text-color: white;
+    --bg-url: url(bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-color-hover: rgba(255, 255, 255, 0.2);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(moon-stars.svg);
+    --shadow-hover: rgba(255, 255, 255, 0.5);
+}
+
+.light {
+    --text-color: black;
+    --bg-url: url(bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.2);
+    --highlight-color: rgba(0, 0, 0, 0.2);
+    --switch-bg-url: url(sun.svg);
+    --shadow-hover: rgba(0, 0, 0, 0.5);
+}
+
+/* Fundo da Página */
+body {
+    background: var(--bg-url) no-repeat top center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+body * {
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+}
+
+/* Contêiner Central */
+#container {
+    width: 100%;
+    max-width: 588px;
+    margin: 56px auto 0;
+    padding: 0 24px;
+    opacity: 0;
+    animation: aparecer 0.8s ease-out forwards;
+}
+
+/* Perfil */
+#profile {
+    text-align: center;
+    padding: 24px;
+    opacity: 0;
+    animation: aparecer 0.8s ease-out forwards;
+}
+
+#profile img {
+    width: 112px;
+    max-width: 100%;
+}
+
+#profile p {
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+/* Switch */
+#switch {
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+
+
+@keyframes slide-toggle {
+    from {
+        left: 0;
+    }
+    to {
+        left: 32px;
+    }
+}
+
+@keyframes slide-toggle-reverse {
+    from {
+        left: 32px;
+    }
+    to {
+        left: 0;
+    }
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+    transition: left 0.4s ease-in-out, background 0.4s ease-in-out;
+}
+
+
+.light #switch button {
+    animation: slide-toggle 0.4s forwards;
+    background: white var(--switch-bg-url) no-repeat center;
+}
+
+.dark #switch button {
+    animation: slide-toggle-reverse 0.4s forwards;
+    background: white var(--switch-bg-url) no-repeat center;
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+/* Links */
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+    opacity: 0;
+    animation: aparecer 0.8s ease-out forwards;
+}
+
+ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover com sombra */
+ul li a:hover {
+    background-color: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+    box-shadow: 0px 4px 10px var(--shadow-hover); 
+}
+
+/* Redes Sociais */
+#social-links {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    font-size: 24px;
+    opacity: 0;
+    animation: aparecer 0.8s ease-out forwards;
+}
+
+#social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+
+#social-links a:hover {
+    background: var(--highlight-color);
+}
+
+/* Rodapé */
+footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    animation: aparecer 0.8s ease-out forwards;
+}
+
+/* Animation */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
